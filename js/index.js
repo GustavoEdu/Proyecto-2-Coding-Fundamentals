@@ -1,5 +1,6 @@
+// import Jugador from "./Jugador.js";
 import Tablero from "./Tablero.js";
-
+// import Ficha from "./Ficha.js";
 const miTablero = new Tablero();
 let turno = true; // true - Jugador1 : false - Jugador2
 console.log("Jugador 1", "X");
