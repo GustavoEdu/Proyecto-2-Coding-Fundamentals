@@ -1,10 +1,10 @@
 # Proyecto-2-Coding-Fundamentals
 **Hoja de Ruta:**
 
+***Turno***
 * Diseño de Clases:
     * Tablero
         * Tablero (Matriz)
-        * ***Turno***
         * **hayUnGanador**
         * **modificarCasilla**
         * **obtenerCasilla**

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script type="module" src="./js/index.js"></script>
 </head>
 <body>
     <h1>XO</h1>
@@ -32,22 +34,23 @@
         <label for="colorFichaJugador2"></label>
         <input type="color" id="colorFichaJugador2">
     </form>
-    <table>
+    <table id="tablero">
         <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+            <td class="casilla" data-fila="0" data-columna="0"></td>
+            <td class="casilla" data-fila="0" data-columna="1"></td>
+            <td class="casilla" data-fila="0" data-columna="2"></td>
         </tr>
         <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
+            <td class="casilla" data-fila="1" data-columna="0"></td>
+            <td class="casilla" data-fila="1" data-columna="1"></td>
+            <td class="casilla" data-fila="1" data-columna="2"></td>
         </tr>
         <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
+            <td class="casilla" data-fila="2" data-columna="0"></td>
+            <td class="casilla" data-fila="2" data-columna="1"></td>
+            <td class="casilla" data-fila="2" data-columna="2"></td>
         </tr>
     </table>
+    <button id="botonReseteo">Jugar otra partida</button>
 </body>
 </html>
