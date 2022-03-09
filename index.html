@@ -9,48 +9,77 @@
     <script type="module" src="./js/index.js"></script>
 </head>
 <body>
-    <h1>XO</h1>
-    <!-- Jugador 1 -->
-    <form id="formularioJugador1">
-        <label for="nombreJugador1"></label>
-        <input type="text" id="nombreJugador1">
-        <label for="tipoFichaJugador1"></label>
-        <select id="tipoFichaJugador1">
-            <option>X</option>
-            <option>O</option>
-        </select>
-        <label for="colorFichaJugador1"></label>
-        <input type="color" id="colorFichaJugador1">
-    </form>
-    <!-- Jugador 2 -->
-    <form id="formularioJugador2">
-        <label for="nombreJugador2"></label>
-        <input type="text" id="nombreJugador2">
-        <label for="tipoFichaJugador2"></label>
-        <select id="tipoFichaJugador2">
-            <option>X</option>
-            <option>O</option>
-        </select>
-        <label for="colorFichaJugador2"></label>
-        <input type="color" id="colorFichaJugador2">
-    </form>
-    <table id="tablero">
-        <tr>
-            <td class="casilla" data-fila="0" data-columna="0"></td>
-            <td class="casilla" data-fila="0" data-columna="1"></td>
-            <td class="casilla" data-fila="0" data-columna="2"></td>
-        </tr>
-        <tr>
-            <td class="casilla" data-fila="1" data-columna="0"></td>
-            <td class="casilla" data-fila="1" data-columna="1"></td>
-            <td class="casilla" data-fila="1" data-columna="2"></td>
-        </tr>
-        <tr>
-            <td class="casilla" data-fila="2" data-columna="0"></td>
-            <td class="casilla" data-fila="2" data-columna="1"></td>
-            <td class="casilla" data-fila="2" data-columna="2"></td>
-        </tr>
-    </table>
-    <button id="botonReseteo">Jugar otra partida</button>
+    <section id="paginaIntroductoria">
+        <button id="btnTransicionRegistroJugador1">Iniciar partida</button>
+    </section>
+    <section id="paginaJugador1">
+        <form id="formularioJugador1">
+            <h3 class="form-item form-title">Jugador 1</h3>
+            <div class="form-item">
+                <label for="nombreJugador1">Ingrese el nombre:</label>
+                <input type="text" id="nombreJugador1">
+            </div>
+            <div class="form-item">
+                <label for="tipoFichaJugador1">Selecciones una Ficha:</label>
+                <select id="tipoFichaJugador1">
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="colorFichaJugador1">Seleccione un Color de Ficha:</label>
+                <input type="color" id="colorFichaJugador1">
+            </div>
+            <input type="submit" value="Aceptar">
+        </form>
+    </section>
+    <section id="paginaJugador2">
+        <form id="formularioJugador2">
+            <h3 class="form-item form-title">Jugador 2</h3>
+            <div class="form-item">
+                <label for="nombreJugador2">Ingrese el nombre:</label>
+                <input type="text" id="nombreJugador2">
+            </div>
+            <div class="form-item">
+                <label for="tipoFichaJugador2">Selecciones una Ficha:</label>
+                <select id="tipoFichaJugador2">
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="colorFichaJugador2">Seleccione un Color de Ficha:</label>
+                <input type="color" id="colorFichaJugador2">
+            </div>
+            <input type="submit" value="Aceptar">
+        </form>
+    </section>
+    <main id="mainTaTeTi">
+        <nav>
+            <ul class="navbar">
+                <li><button id="btnNuevaPartida">Nueva Partida</button></li>
+                <li><button id="btnJuegoNuevo">Juego Nuevo</button></li>
+                <li class="last-item"><button id="btnSalir">Salir</button></li>
+            </ul>
+        </nav>
+        <table id="tablero">
+            <tr>
+                <td class="casilla" data-fila="0" data-columna="0"></td>
+                <td class="casilla" data-fila="0" data-columna="1"></td>
+                <td class="casilla" data-fila="0" data-columna="2"></td>
+            </tr>
+            <tr>
+                <td class="casilla" data-fila="1" data-columna="0"></td>
+                <td class="casilla" data-fila="1" data-columna="1"></td>
+                <td class="casilla" data-fila="1" data-columna="2"></td>
+            </tr>
+            <tr>
+                <td class="casilla" data-fila="2" data-columna="0"></td>
+                <td class="casilla" data-fila="2" data-columna="1"></td>
+                <td class="casilla" data-fila="2" data-columna="2"></td>
+            </tr>
+        </table>
+        <button id="botonReseteo">Jugar otra partida</button>
+    </main>
 </body>
 </html>
