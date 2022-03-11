@@ -1,3 +1,10 @@
+import Jugador from "./Jugador.js";
+import Ficha from "./Ficha.js";
+import Tablero from "./Tablero.js";
+
+const jugador1 = new Jugador("Jugador 1", 0, {});
+const jugador2 = new Jugador("Jugador 2", 0, {});
+
 const btnTransicionRegistroJugador1 = document.getElementById("btnTransicionRegistroJugador1");
 const paginaIntroductoria = document.getElementById("paginaIntroductoria");
 btnTransicionRegistroJugador1.addEventListener("click", () => {
@@ -8,16 +15,34 @@ const paginaJugador1 = document.getElementById("paginaJugador1");
 const formularioJugador1 = document.getElementById("formularioJugador1");
 formularioJugador1.addEventListener("submit", evt => {
     evt.preventDefault();
+    // TODO: Validación de datos Jugador 1
     paginaJugador1.classList.add("hidden");
-    // TODO: Recuperar datos del Jugador 1
+    //! Recuperar datos del Jugador 1
+    const jd1 = document.getElementById("nombreJugador1").value;
+    const color1 = document.getElementById("colorFichaJugador1").value;
+    const $selectFicha1 = document.getElementById("tipoFichaJugador1").value;
+    jugador1.nombre = jd1;
+    jugador1.objetoFicha = new Ficha(color1, $selectFicha1);
+
+    const tipoFichaJugador2 = document.getElementById("tipoFichaJugador2"); // padre
+    const fichaABorrar = document.getElementById($selectFicha1); // hijo
+    tipoFichaJugador2.removeChild(fichaABorrar); // borramos al hijo
 });
 
 const paginaJugador2 = document.getElementById("paginaJugador2");
 const formularioJugador2 = document.getElementById("formularioJugador2");
 formularioJugador2.addEventListener("submit", evt => {
     evt.preventDefault();
+    // TODO: Validación Jugador 2
     paginaJugador2.classList.add("hidden");
-    // TODO: Recuperar datos del Jugador 2 e Inicializar el Juego
+    //! Recuperar datos del Jugador 2
+    const jd2 = document.getElementById("nombreJugador2").value;
+    const color2 = document.getElementById("colorFichaJugador2").value;
+    const $selectFicha2 = document.getElementById("tipoFichaJugador2").value;
+    jugador2.nombre = jd2;
+    jugador2.objetoFicha = new Ficha(color2, $selectFicha2);
+
+    // TODO: Inicializar el Juego
 })
 
 const btnSalir = document.getElementById("btnSalir");

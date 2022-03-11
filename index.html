@@ -24,6 +24,8 @@
                 <select id="tipoFichaJugador1">
                     <option value="X">X</option>
                     <option value="O">O</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                 </select>
             </div>
             <div class="form-item">
@@ -43,8 +45,10 @@
             <div class="form-item">
                 <label for="tipoFichaJugador2">Selecciones una Ficha:</label>
                 <select id="tipoFichaJugador2">
-                    <option value="X">X</option>
-                    <option value="O">O</option>
+                    <option id="X" value="X">X</option>
+                    <option id="O" value="O">O</option>
+                    <option id="1" value="1">1</option>
+                    <option id="2" value="2">2</option>
                 </select>
             </div>
             <div class="form-item">
@@ -79,7 +83,7 @@
                 <td class="casilla" data-fila="2" data-columna="2"></td>
             </tr>
         </table>
-        <button id="botonReseteo">Jugar otra partida</button>
+        <!-- <<button id="botonReseteo">Jugar otra partida</button> -->
     </main>
     <div class="modalSalida" id="modalSalida">
         <div class="modalSalida__content">
