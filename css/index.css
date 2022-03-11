@@ -11,7 +11,6 @@ body {
     width: 100vw;
     height: 100vh;
     background-image: url("../img/TaTeTi.png");
-    filter: grayscale(70%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +18,7 @@ body {
     z-index: 100;
 }
 .hidden {
-    transform: translateX(100vw);
+    transform: translateX(-100vw);
 }
 #btnTransicionRegistroJugador1 {
     width: 60vw;
@@ -34,12 +33,13 @@ body {
     justify-content: center;
     align-items: center;
     transition: transform 2s;
-    background-color: gold;
 }
 #paginaJugador1 {
+    background-color: rgb(148, 210, 189);
     z-index: 90;
 }
 #paginaJugador2 {
+    background-color: rgb(238, 155, 0);
     z-index: 80;
 }
 form {
@@ -72,6 +72,7 @@ input[type=submit] {
     width: 100vw;
     height: 100vh;
     z-index: 70;
+    background-color: rgb(233, 216, 166);
 }
 .navbar {
     list-style: none;
@@ -87,4 +88,24 @@ table {
 td {
     padding: 50px;
     background-color: steelblue;
+}
+.modalSalida {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: transform 1s;
+    z-index: 75;
+}
+.modalSalida__content {
+    width: 55vw;
+    height: 50vh;
+    background-color: white;
+}
+.modalActivo {
+    transform: scale(1);
 }

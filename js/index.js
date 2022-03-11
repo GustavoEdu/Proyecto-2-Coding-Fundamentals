@@ -9,6 +9,7 @@ const formularioJugador1 = document.getElementById("formularioJugador1");
 formularioJugador1.addEventListener("submit", evt => {
     evt.preventDefault();
     paginaJugador1.classList.add("hidden");
+    // TODO: Recuperar datos del Jugador 1
 });
 
 const paginaJugador2 = document.getElementById("paginaJugador2");
@@ -16,7 +17,28 @@ const formularioJugador2 = document.getElementById("formularioJugador2");
 formularioJugador2.addEventListener("submit", evt => {
     evt.preventDefault();
     paginaJugador2.classList.add("hidden");
+    // TODO: Recuperar datos del Jugador 2 e Inicializar el Juego
 })
+
+const btnSalir = document.getElementById("btnSalir");
+const modalSalida = document.getElementById("modalSalida");
+btnSalir.addEventListener("click", () => {
+    modalSalida.classList.add("modalActivo");
+});
+modalSalida.addEventListener("click", evt => {
+    const targetElement = evt.target;
+    if(targetElement.classList.contains("modalSalida") || targetElement.id === "btnCancelar") {
+        modalSalida.classList.remove("modalActivo");
+    }
+});
+
+const btnSalirDefinitivo = document.getElementById("btnSalirDefinitivo");
+btnSalirDefinitivo.addEventListener("click", () => {
+    paginaIntroductoria.classList.remove("hidden");
+    paginaJugador1.classList.remove("hidden");
+    paginaJugador2.classList.remove("hidden");
+    modalSalida.classList.remove("modalActivo");
+});
 
 /* import Jugador from "./Jugador.js";
 import Tablero from "./Tablero.js";
