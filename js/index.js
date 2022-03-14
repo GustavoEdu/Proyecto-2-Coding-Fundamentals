@@ -2,6 +2,8 @@ import Jugador from "./Jugador.js";
 import Ficha from "./Ficha.js";
 import Tablero from "./Tablero.js";
 
+const audioGanador = new Audio("../media/jijijija.mp3");
+
 const jugador1 = new Jugador("Jugador 1", 0, {});
 const jugador2 = new Jugador("Jugador 2", 0, {});
 
@@ -198,6 +200,7 @@ function invokeModalGanadorDefinitivo() {
     const nombreGanadorDefinitivo = document.getElementById("nombreGanadorDefinitivo");
     nombreGanadorDefinitivo.textContent = turno ? jugador1.nombre : jugador2.nombre;
     modalGanadorDefinitivo.classList.add("modalActivo");
+    audioGanador.play();
 }
 modalGanadorDefinitivo.addEventListener("click", evt => {
     const targetElement = evt.target;
