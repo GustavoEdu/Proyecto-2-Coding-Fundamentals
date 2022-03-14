@@ -153,7 +153,6 @@ tablero.addEventListener("click", evt => {
         return;
     }
     if(miTablero.hayUnGanador()) {
-        console.log((turno ? jugador1.nombre : jugador2.nombre) + " ha ganado la partida!");
         if(turno) {
             jugador1.cantidadPartidasGanadas++;
         } else {
@@ -173,7 +172,6 @@ tablero.addEventListener("click", evt => {
         return;
     }
     if(miTablero.hayEmpate()) {
-        console.log("¡Hay Empate!");
         btnNuevaPartida.disabled = false;
         return;
     }
