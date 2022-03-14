@@ -98,7 +98,13 @@ td {
     width: 145px;
     height: 145px;
     padding: 5px;
+    border: 1px solid white;
     background-color: steelblue;
+}
+.casilla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .modalSalida {
     position: fixed;
