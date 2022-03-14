@@ -15,14 +15,17 @@ const paginaJugador1 = document.getElementById("paginaJugador1");
 const formularioJugador1 = document.getElementById("formularioJugador1");
 formularioJugador1.addEventListener("submit", evt => {
     evt.preventDefault();
-    // TODO: Validación de datos Jugador 1
+    //* Validación de datos Jugador 1
+    if(!document.getElementById("nombreJugador1").value) { return; }
     paginaJugador1.classList.add("hidden");
-    //! Recuperar datos del Jugador 1
+    //* Recuperar datos del Jugador 1
     const jd1 = document.getElementById("nombreJugador1").value;
     const color1 = document.getElementById("colorFichaJugador1").value;
     const $selectFicha1 = document.getElementById("tipoFichaJugador1").value;
+    //* Asignación del Jugador 1
     jugador1.nombre = jd1;
     jugador1.objetoFicha = new Ficha(color1, $selectFicha1);
+    //! console.log(jugador1);
 
     const tipoFichaJugador2 = document.getElementById("tipoFichaJugador2"); // padre
     const fichaABorrar = document.getElementById($selectFicha1); // hijo
@@ -33,17 +36,24 @@ const paginaJugador2 = document.getElementById("paginaJugador2");
 const formularioJugador2 = document.getElementById("formularioJugador2");
 formularioJugador2.addEventListener("submit", evt => {
     evt.preventDefault();
-    // TODO: Validación Jugador 2
+    //* Validación Jugador 2
+    if(!document.getElementById("nombreJugador2").value) { return; }
     paginaJugador2.classList.add("hidden");
-    //! Recuperar datos del Jugador 2
+    //* Recuperar datos del Jugador 2
     const jd2 = document.getElementById("nombreJugador2").value;
     const color2 = document.getElementById("colorFichaJugador2").value;
     const $selectFicha2 = document.getElementById("tipoFichaJugador2").value;
+    //* Asignación del Jugador2
     jugador2.nombre = jd2;
     jugador2.objetoFicha = new Ficha(color2, $selectFicha2);
+    console.log(jugador2);
 
-    // TODO: Inicializar el Juego
+    // TODO: Inicializar la partida
 })
+
+function inicializarPartida() {
+    // TODO: Agregar un observer
+}
 
 const btnSalir = document.getElementById("btnSalir");
 const modalSalida = document.getElementById("modalSalida");
@@ -65,50 +75,51 @@ btnSalirDefinitivo.addEventListener("click", () => {
     modalSalida.classList.remove("modalActivo");
 });
 
-/* import Jugador from "./Jugador.js";
-import Tablero from "./Tablero.js";
-// import Ficha from "./Ficha.js";
+//* Inicio del Juego
 const miTablero = new Tablero();
 let turno = true; // true - Jugador1 : false - Jugador2
-const jugador1 = new Jugador("", 0);
-console.log("Jugador 1", "X");
-console.log("Jugador 2", "O");
 const tablero = document.getElementById("tablero");
-const botonReseteo = document.getElementById("botonReseteo");
-botonReseteo.disabled = true;
+//! const botonReseteo = document.getElementById("botonReseteo");
+//! botonReseteo.disabled = true;
 
+/*
 botonReseteo.onclick = function() {
     miTablero.initicializarTablero();
     const casillas = document.querySelectorAll(".casilla");
     for(let casilla of casillas) {
         casilla.textContent = "";
     }
-    botonReseteo.disabled = true;
+    //! botonReseteo.disabled = true;
 }
+*/
 
 tablero.addEventListener("click", evt => {
+    //* Validación del Ganador o Empate
     if(miTablero.hayUnGanador() || miTablero.hayEmpate()) { return; }
     const casilla = evt.target;
     const fila = casilla.dataset.fila;
     const columna = casilla.dataset.columna;
-    if(!casilla.textContent) {
+    if(!casilla.innerHTML) {
         if(turno) {
-            casilla.textContent = "X";
-            miTablero.tablero[fila][columna] = "X";
+            casilla.innerHTML = jugador1.objetoFicha;
+            miTablero.tablero[fila][columna] = Jugador.FICHA_INTERNA_JUGADOR_1;
         } else {
-            casilla.textContent = "O";
-            miTablero.tablero[fila][columna] = "O";
+            casilla.innerHTML = jugador2.objetoFicha;
+            miTablero.tablero[fila][columna] = Jugador.FICHA_INTERNA_JUGADOR_2;
         }
     } else {
+        // TODO: Implementar cuadro de diálogo para una jugada inválida
         console.log("Jugada Inválida!");
+        return;
     }
     if(miTablero.hayUnGanador()) {
-        console.log((turno ? "Jugador 1" : "Jugador 2") + " ha ganado la partida!");
+        console.log((turno ? jugador1.nombre : jugador2.nombre) + " ha ganado la partida!");
         if(turno) {
             jugador1.cantidadPartidasGanadas++;
         } else {
+            jugador2.cantidadPartidasGanadas++;
         }
-        botonReseteo.disabled = false;
+        //! botonReseteo.disabled = false;
         return;
     }
     // TODO: Implementar que sucede cuando alguien gana definitivamente n partidas
@@ -119,8 +130,8 @@ tablero.addEventListener("click", evt => {
     }
     if(miTablero.hayEmpate()) {
         console.log("¡Hay Empate!");
-        botonReseteo.disabled = false;
+        //! botonReseteo.disabled = false;
         return;
     }
     turno = !turno;
-}); */
+});

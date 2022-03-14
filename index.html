@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <script type="module" src="./js/index.js"></script>
 </head>
@@ -17,15 +18,15 @@
             <h3 class="form-item form-title">Jugador 1</h3>
             <div class="form-item">
                 <label for="nombreJugador1">Ingrese el nombre:</label>
-                <input type="text" id="nombreJugador1">
+                <input type="text" id="nombreJugador1" required>
             </div>
             <div class="form-item">
                 <label for="tipoFichaJugador1">Selecciones una Ficha:</label>
-                <select id="tipoFichaJugador1">
-                    <option value="X">X</option>
-                    <option value="O">O</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                <select id="tipoFichaJugador1" class="fa">
+                    <option value="X">&#xf00d;</option>
+                    <option value="O">&#xf111;</option>
+                    <option value="Δ">&#xf0d8;</option>
+                    <option value="□">&#xf0c8;</option>
                 </select>
             </div>
             <div class="form-item">
@@ -40,15 +41,15 @@
             <h3 class="form-item form-title">Jugador 2</h3>
             <div class="form-item">
                 <label for="nombreJugador2">Ingrese el nombre:</label>
-                <input type="text" id="nombreJugador2">
+                <input type="text" id="nombreJugador2" required>
             </div>
             <div class="form-item">
                 <label for="tipoFichaJugador2">Selecciones una Ficha:</label>
-                <select id="tipoFichaJugador2">
-                    <option id="X" value="X">X</option>
-                    <option id="O" value="O">O</option>
-                    <option id="1" value="1">1</option>
-                    <option id="2" value="2">2</option>
+                <select class="fa" id="tipoFichaJugador2">
+                    <option id="X" value="X">&#xf00d;</option>
+                    <option id="O" value="O">&#xf111;</option>
+                    <option id="Δ" value="Δ">&#xf0d8;</option>
+                    <option id="□" value="□">&#xf0c8;</option>
                 </select>
             </div>
             <div class="form-item">
@@ -61,28 +62,42 @@
     <main id="mainTaTeTi">
         <nav>
             <ul class="navbar">
-                <li><button id="btnNuevaPartida">Nueva Partida</button></li>
-                <li><button id="btnJuegoNuevo">Juego Nuevo</button></li>
-                <li class="last-item"><button id="btnSalir">Salir</button></li>
+                <li id="btnNuevaPartida">Nueva Partida</li>
+                <li id="btnJuegoNuevo">Juego Nuevo</li>
+                <li id="btnSalir" class="last-item">Salir</li>
             </ul>
         </nav>
-        <table id="tablero">
-            <tr>
-                <td class="casilla" data-fila="0" data-columna="0"></td>
-                <td class="casilla" data-fila="0" data-columna="1"></td>
-                <td class="casilla" data-fila="0" data-columna="2"></td>
-            </tr>
-            <tr>
-                <td class="casilla" data-fila="1" data-columna="0"></td>
-                <td class="casilla" data-fila="1" data-columna="1"></td>
-                <td class="casilla" data-fila="1" data-columna="2"></td>
-            </tr>
-            <tr>
-                <td class="casilla" data-fila="2" data-columna="0"></td>
-                <td class="casilla" data-fila="2" data-columna="1"></td>
-                <td class="casilla" data-fila="2" data-columna="2"></td>
-            </tr>
-        </table>
+        <section>
+            <div>
+                <div class="j1">
+                    <h3>Jugador 1</h3>
+                    <p><span>Partidas Ganadas:</span><span></span></p>
+                </div>
+                <div class="j2">
+                    <h3>Jugador 2</h3>
+                    <p><span>Partidas Ganadas:</span><span></span></p>
+                </div>
+            </div>
+            <div class="tablero">
+                <table id="tablero">
+                    <tr>
+                        <td class="casilla" data-fila="0" data-columna="0"></td>
+                        <td class="casilla" data-fila="0" data-columna="1"></td>
+                        <td class="casilla" data-fila="0" data-columna="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="casilla" data-fila="1" data-columna="0"></td>
+                        <td class="casilla" data-fila="1" data-columna="1"></td>
+                        <td class="casilla" data-fila="1" data-columna="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="casilla" data-fila="2" data-columna="0"></td>
+                        <td class="casilla" data-fila="2" data-columna="1"></td>
+                        <td class="casilla" data-fila="2" data-columna="2"></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
         <!-- <<button id="botonReseteo">Jugar otra partida</button> -->
     </main>
     <div class="modalSalida" id="modalSalida">

@@ -3,4 +3,7 @@ export default class Ficha {
         this.color = c;
         this.forma = f;
     }
+    toString() {
+        return `TaTeTi ${this.forma}`;
+    }
 }

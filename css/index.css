@@ -79,14 +79,25 @@ input[type=submit] {
     display: flex;
     background-color: greenyellow;
 }
+.navbar > li {
+    padding: 1.5em;
+}
 li.last-item {
     margin-left: auto;
+}
+
+.tablero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 table {
     background-color: wheat;
 }
 td {
-    padding: 50px;
+    width: 145px;
+    height: 145px;
+    padding: 5px;
     background-color: steelblue;
 }
 .modalSalida {
