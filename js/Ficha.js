@@ -3,6 +3,34 @@ export default class Ficha {
         this.color = c;
         this.forma = f;
     }
+    /*
+        <select id="tipoFichaJugador1" class="fa">
+            <option value="X">&#xf00d;</option>
+            <option value="O">&#xf111;</option>
+            <option class="fa-2x" value="Δ">&#xf0d8;</option>
+            <option value="□">&#xf0c8;</option>
+        </select>
+    */
+    getIcon() {
+        switch(this.forma) {
+            case "X":
+                return `
+                    <i class="fa fa-lg" style="color:${this.color};">&#xf00d;</i>
+                `;
+            case "O":
+                return `
+                    <i class="fa fa-lg" style="color:${this.color};">&#xf111;</i>
+                `;
+            case "Δ":
+                return `
+                    <i class="fa fa-2x" style="color:${this.color};">&#xf0d8;</i>
+                `;
+            case "□":
+                return `
+                    <i class="fa fa-lg" style="color:${this.color};">&#xf0c8;</i>
+                `;
+        }
+    }
     toString() {
         switch(this.forma) {
             case "X":

@@ -25,7 +25,7 @@
                 <select id="tipoFichaJugador1" class="fa">
                     <option value="X">&#xf00d;</option>
                     <option value="O">&#xf111;</option>
-                    <option value="Δ">&#xf0d8;</option>
+                    <option class="fa-2x" value="Δ">&#xf0d8;</option>
                     <option value="□">&#xf0c8;</option>
                 </select>
             </div>
@@ -48,7 +48,7 @@
                 <select class="fa" id="tipoFichaJugador2">
                     <option id="X" value="X">&#xf00d;</option>
                     <option id="O" value="O">&#xf111;</option>
-                    <option id="Δ" value="Δ">&#xf0d8;</option>
+                    <option class="fa-2x" id="Δ" value="Δ">&#xf0d8;</option>
                     <option id="□" value="□">&#xf0c8;</option>
                 </select>
             </div>
@@ -62,20 +62,26 @@
     <main id="mainTaTeTi">
         <nav>
             <ul class="navbar">
-                <li id="btnNuevaPartida">Nueva Partida</li>
-                <li id="btnJuegoNuevo">Juego Nuevo</li>
-                <li id="btnSalir" class="last-item">Salir</li>
+                <li><button id="btnNuevaPartida">Nueva Partida</button></li>
+                <li><button id="btnJuegoNuevo">Juego Nuevo</button></li>
+                <li class="last-item"><button id="btnSalir">Salir</button></li>
             </ul>
         </nav>
         <section>
-            <div>
-                <div class="j1">
-                    <h3>Jugador 1</h3>
-                    <p><span>Partidas Ganadas:</span><span></span></p>
+            <div class="playerCards">
+                <div class="cardJugador1">
+                    <p><span id="casillaNombreJugador1"></span><span id="casillaFichaJugador1"></span></p>
+                    <p><span>Partidas Ganadas: </span><span id="jugador1Contador"></span></p>
+                    <p id="mensajeErrorJugador1"></p>
                 </div>
-                <div class="j2">
-                    <h3>Jugador 2</h3>
-                    <p><span>Partidas Ganadas:</span><span></span></p>
+                <div class="cardTurno">
+                    <h3>Turno:</h3>
+                    <div id="divTurno"></div>
+                </div>
+                <div class="cardJugador2">
+                    <p><span id="casillaNombreJugador2"></span><span id="casillaFichaJugador2"></span></p>
+                    <p><span>Partidas Ganadas: </span><span id="jugador2Contador"></span></p>
+                    <p id="mensajeErrorJugador2"></p>
                 </div>
             </div>
             <div class="tablero">
@@ -100,8 +106,15 @@
         </section>
         <!-- <<button id="botonReseteo">Jugar otra partida</button> -->
     </main>
-    <div class="modalSalida" id="modalSalida">
-        <div class="modalSalida__content">
+    <div class="modal" id="modalGanadorDefinitivo">
+        <div class="modal__content">
+            <div id="btnCerrarVentana">✘</div>
+            <p>¡<span id="nombreGanadorDefinitivo"></span> ha ganado el juego!</p>
+            <img src="https://c.tenor.com/LDtBiM9ciEoAAAAC/clash-royale-clash-royale-emote.gif" alt="imagenGanador">
+        </div>
+    </div>
+    <div class="modal" id="modalSalida">
+        <div class="modal__content">
             <p>¿Seguro que quieres salir?</p>
             <div class="btnsSalida">
                 <button id="btnSalirDefinitivo">Aceptar</button>
