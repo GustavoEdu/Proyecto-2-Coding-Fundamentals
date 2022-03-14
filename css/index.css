@@ -97,14 +97,13 @@ table {
 td {
     width: 145px;
     height: 145px;
-    padding: 5px;
     border: 1px solid white;
     background-color: steelblue;
 }
-.casilla {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+td > svg {
+    width: 100%;
+    padding-left: 22px;
+    background-color: red;
 }
 .modalSalida {
     position: fixed;
