@@ -1,4 +1,9 @@
 # Proyecto-2-Coding-Fundamentals
+**Integrantes:**
+* Federico
+* Gustavo
+* Camila
+
 **Hoja de Ruta:**
 
 ***Turno***
@@ -17,4 +22,4 @@
 
 * Lógica del Tablero
 
-* Personalización
+* Personalización y Multimedia
