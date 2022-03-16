@@ -2,7 +2,12 @@ import Jugador from "./Jugador.js";
 import Ficha from "./Ficha.js";
 import Tablero from "./Tablero.js";
 
+const audioJugadaCorrecta = new Audio("../media/jugadaCorrecta.mpeg");
+const audioJugadaIncorrecta = new Audio("../media/jugadaIncorrecta.mpeg");
+const audioPartidaGanada = new Audio("../media/partidaGanada.mpeg");
 const audioGanador = new Audio("../media/jijijija.mp3");
+audioPartidaGanada.volume = 0.2;
+audioGanador.volume = 0.5;
 
 const jugador1 = new Jugador("Jugador 1", 0, {});
 const jugador2 = new Jugador("Jugador 2", 0, {});
@@ -56,29 +61,6 @@ const miTablero = new Tablero();
 let turno = Boolean(Math.floor(Math.random() * 2)); // true - Jugador1 : false - Jugador2
 const tablero = document.getElementById("tablero");
 
-function inicializarPartida() {
-    const casillaNombreJugador1 = document.getElementById("casillaNombreJugador1");
-    const casillaNombreJugador2 = document.getElementById("casillaNombreJugador2");
-    const casillaFichaJugador1 = document.getElementById("casillaFichaJugador1");
-    const casillaFichaJugador2 = document.getElementById("casillaFichaJugador2");
-    const jugador1Contador = document.getElementById("jugador1Contador");
-    const jugador2Contador = document.getElementById("jugador2Contador");
-
-    casillaNombreJugador1.textContent = jugador1.nombre;
-    casillaNombreJugador2.textContent = jugador2.nombre;
-    casillaFichaJugador1.innerHTML = jugador1.objetoFicha.getIcon();
-    casillaFichaJugador2.innerHTML = jugador2.objetoFicha.getIcon();
-    jugador1Contador.textContent = jugador1.cantidadPartidasGanadas;
-    jugador2Contador.textContent = jugador2.cantidadPartidasGanadas;
-
-    refrescarTurno();
-}
-
-function refrescarTurno() {
-    const divTurno = document.getElementById("divTurno");
-    divTurno.innerHTML = turno ? jugador1.objetoFicha : jugador2.objetoFicha;
-}
-
 const btnSalir = document.getElementById("btnSalir");
 const modalSalida = document.getElementById("modalSalida");
 btnSalir.addEventListener("click", () => {
@@ -118,10 +100,10 @@ btnSalirDefinitivo.addEventListener("click", () => {
     jugador2.cantidadPartidasGanadas = 0;
     jugarOtraPartida();
     tipoFichaJugador2.innerHTML = `
-        <option id="X" value="X">&#xf00d;</option>
-        <option id="O" value="O">&#xf111;</option>
-        <option class="fa-2x" id="Δ" value="Δ">&#xf0d8;</option>
-        <option id="□" value="□">&#xf0c8;</option>
+        <option id="X" value="X">X</option>
+        <option id="O" value="O">O</option>
+        <option id="Δ" value="Δ">Δ</option>
+        <option id="□" value="□">□</option>
     `;
     btnNuevaPartida.disabled = true;
     btnJuegoNuevo.disabled = true;
@@ -129,10 +111,11 @@ btnSalirDefinitivo.addEventListener("click", () => {
 
 const mensajeErrorJugador1 = document.getElementById("mensajeErrorJugador1");
 const mensajeErrorJugador2 = document.getElementById("mensajeErrorJugador2");
+let casillasGanadoras = [];
 
 tablero.addEventListener("click", evt => {
     //* Validación del Ganador o Empate
-    if(miTablero.hayUnGanador() || miTablero.hayEmpate()) { return; }
+    if(miTablero.hayUnGanador().length > 0 || miTablero.hayEmpate()) { return; }
     const casilla = evt.target;
     const fila = casilla.dataset.fila;
     const columna = casilla.dataset.columna;
@@ -152,14 +135,32 @@ tablero.addEventListener("click", evt => {
         } else {
             mensajeErrorJugador2.textContent = "¡Jugada Inválida!";
         }
+        audioJugadaIncorrecta.play();
         return;
     }
-    if(miTablero.hayUnGanador()) {
+    if(miTablero.hayUnGanador().length > 0) {
         if(turno) {
             jugador1.cantidadPartidasGanadas++;
         } else {
             jugador2.cantidadPartidasGanadas++;
         }
+        if(!(jugador1.cantidadPartidasGanadas === 5 || jugador2.cantidadPartidasGanadas === 5)) {
+            audioPartidaGanada.play();
+        }
+        /* Sombreados */
+        const casillas = document.querySelectorAll(".casilla");
+        const coordenadasCasillasAPintar = miTablero.hayUnGanador();
+        for(let i = 0; i < casillas.length; i++) {
+            const fil = casillas[i].dataset.fila;
+            const col = casillas[i].dataset.columna;
+            for(let j = 0; j < coordenadasCasillasAPintar.length; j++) {
+                if(fil == coordenadasCasillasAPintar[j].x && col == coordenadasCasillasAPintar[j].y) {
+                    casillas[i].style.border = "5px solid #000";
+                    casillasGanadoras.push(casillas[i]);
+                }
+            }
+        }
+        /* /Sombreados */
         //* Refresco de Cartillas
         inicializarPartida();
 
@@ -172,6 +173,14 @@ tablero.addEventListener("click", evt => {
         btnNuevaPartida.disabled = false;
         turno = !turno;
         return;
+    } else {
+        const soundDiv = document.getElementById("soundDiv");
+        soundDiv.innerHTML = `
+            <audio autoplay>
+                <source src="../media/jugadaCorrecta.mpeg" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        `;
     }
     if(miTablero.hayEmpate()) {
         btnNuevaPartida.disabled = false;
@@ -181,11 +190,37 @@ tablero.addEventListener("click", evt => {
     refrescarTurno();
 });
 
+function inicializarPartida() {
+    const casillaNombreJugador1 = document.getElementById("casillaNombreJugador1");
+    const casillaNombreJugador2 = document.getElementById("casillaNombreJugador2");
+    const casillaFichaJugador1 = document.getElementById("casillaFichaJugador1");
+    const casillaFichaJugador2 = document.getElementById("casillaFichaJugador2");
+    const jugador1Contador = document.getElementById("jugador1Contador");
+    const jugador2Contador = document.getElementById("jugador2Contador");
+
+    casillaNombreJugador1.textContent = jugador1.nombre;
+    casillaNombreJugador2.textContent = jugador2.nombre;
+    casillaFichaJugador1.innerHTML = jugador1.objetoFicha.getIcon();
+    casillaFichaJugador2.innerHTML = jugador2.objetoFicha.getIcon();
+    jugador1Contador.textContent = jugador1.cantidadPartidasGanadas;
+    jugador2Contador.textContent = jugador2.cantidadPartidasGanadas;
+
+    refrescarTurno();
+}
+
+function refrescarTurno() {
+    const divTurno = document.getElementById("divTurno");
+    divTurno.innerHTML = turno ? jugador1.objetoFicha : jugador2.objetoFicha;
+}
+
 function jugarOtraPartida() {
     miTablero.initicializarTablero();
     refrescarTableroDOM();
     mensajeErrorJugador1.textContent = "";
     mensajeErrorJugador2.textContent = "";
+    for(let casillaGanadora of casillasGanadoras) {
+        casillaGanadora.style.border = "";
+    }
 }
 
 function refrescarTableroDOM() {

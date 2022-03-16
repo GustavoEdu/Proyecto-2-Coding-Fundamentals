@@ -2,15 +2,32 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
 }
 body {
     overflow: hidden;
+}
+button, input[type="submit"] {
+    font-weight: bold;
+}
+input[type="color"], select {
+    display: inline-block;
+    width: 4em;
+    height: 3em;
+    padding: 1px;
+}
+select > option {
+    text-align: center;
+    font-size: 1.2rem;
 }
 #paginaIntroductoria {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url("../img/TaTeTi.png");
+    background-image: linear-gradient(120deg,
+    rgba(221, 184, 61, 0.45) 0%,
+    rgba(236, 134, 105, 0.75) 100%),
+    url("../img/TaTeTi.png");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +40,14 @@ body {
 #btnTransicionRegistroJugador1 {
     width: 60vw;
     height: 15vh;
+    border: 4px solid black;
+    border-radius: 10px;
+    cursor: pointer;
     font-size: 3rem;
+    background-color: #f3f3f3;
+}
+#btnTransicionRegistroJugador1:hover {
+    background-color: #bdafaf;
 }
 #paginaJugador1, #paginaJugador2 {
     position: absolute;
@@ -35,20 +59,30 @@ body {
     transition: transform 2s;
 }
 #paginaJugador1 {
-    background-color: rgb(148, 210, 189);
+    background-color: #c88719;
     z-index: 90;
 }
 #paginaJugador2 {
-    background-color: rgb(238, 155, 0);
+    background-color: #ca9b52;
     z-index: 80;
 }
 form {
     padding: 0 3em;
     border-radius: 10px;
-    background-color: gainsboro;
+    background-color: #f3f3f3;
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
+}
+.btnEnviar {
+    padding: 0.5em;
+    border: 3px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #bdafaf;
+}
+.btnEnviar:hover {
+    background-color: #a89999;
 }
 .form-item {
     margin-bottom: 1.2em;
@@ -72,30 +106,48 @@ input[type=submit] {
     width: 100vw;
     height: 100vh;
     z-index: 70;
-    background-color: rgb(233, 216, 166);
+    background-color: #faedcd;
 }
 .navbar {
     list-style: none;
     display: flex;
-    background-color: greenyellow;
+    background-color: #e7bc91;
 }
 li.last-item {
     margin-left: auto;
 }
+/* Set of main Buttons */
+#btnNuevaPartida, #btnJuegoNuevo, #btnSalir {
+    padding: 1em;
+    border: none;
+    background-color: #d69017;
+}
+#btnNuevaPartida:hover, #btnJuegoNuevo:hover, #btnSalir:hover {
+    background-color: #b98b5d;
+}
+#btnNuevaPartida:disabled, #btnJuegoNuevo:disabled, #btnSalir:disabled {
+    background-color: #e7bc91;
+}
+/* /Set of main Buttons */
 .cardTurno {
+    padding: 0.75em;
     text-align: center;
-    background-color: aqua;
+    font-size: 1.2rem;
+    background-color: #6dacdf;
 }
 .playerCards {
+    margin-top: 1.5em;
+    margin-bottom: 4em;
     display: flex;
     justify-content: space-between;
 }
 .cardJugador1, .cardJugador2 {
-    border: 1px solid black;
-    background-color: steelblue;
+    padding: 1em;
+    background-color: #79a8cf;
 }
-#casillaNombreJugador1, #casillaNombreJugador2 {
+.casillaNombre, .casillaPartidasGanadas {
     text-align: center;
+    font-weight: bold;
 }
 .tablero {
     display: flex;
@@ -130,7 +182,35 @@ td > svg {
 .modal__content {
     width: 55vw;
     height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
     background-color: #3a4042;
+}
+.btnsSalida {
+    margin-top: 1em;
+}
+.btnsSalida > button {
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+    color: white;
+}
+#btnSalirDefinitivo {
+    margin-right: 1.2em;
+    background-color: blue;
+}
+#btnSalirDefinitivo:hover {
+    background-color: steelblue;
+}
+#btnCancelar {
+    background-color: red;
+}
+#btnCancelar:hover {
+    background-color: darkred;
 }
 .modalActivo {
     transform: scale(1);
@@ -148,4 +228,8 @@ td > svg {
 }
 #btnCerrarVentana:hover {
     background-color: red;
+}
+#modalGanadorDefinitivo img {
+    margin-top: 1em;
+    width: 200px;
 }

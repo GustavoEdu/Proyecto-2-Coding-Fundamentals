@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <script type="module" src="./js/index.js"></script>
@@ -22,18 +25,18 @@
             </div>
             <div class="form-item">
                 <label for="tipoFichaJugador1">Selecciones una Ficha:</label>
-                <select id="tipoFichaJugador1" class="fa">
-                    <option value="X">&#xf00d;</option>
-                    <option value="O">&#xf111;</option>
-                    <option class="fa-2x" value="Δ">&#xf0d8;</option>
-                    <option value="□">&#xf0c8;</option>
+                <select id="tipoFichaJugador1">
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                    <option value="Δ">Δ</option>
+                    <option value="□">□</option>
                 </select>
             </div>
             <div class="form-item">
                 <label for="colorFichaJugador1">Seleccione un Color de Ficha:</label>
                 <input type="color" id="colorFichaJugador1">
             </div>
-            <input type="submit" value="Aceptar">
+            <input class="btnEnviar" type="submit" value="Aceptar">
         </form>
     </section>
     <section id="paginaJugador2">
@@ -45,18 +48,18 @@
             </div>
             <div class="form-item">
                 <label for="tipoFichaJugador2">Selecciones una Ficha:</label>
-                <select class="fa" id="tipoFichaJugador2">
-                    <option id="X" value="X">&#xf00d;</option>
-                    <option id="O" value="O">&#xf111;</option>
-                    <option class="fa-2x" id="Δ" value="Δ">&#xf0d8;</option>
-                    <option id="□" value="□">&#xf0c8;</option>
+                <select id="tipoFichaJugador2">
+                    <option id="X" value="X">X</option>
+                    <option id="O" value="O">O</option>
+                    <option id="Δ" value="Δ">Δ</option>
+                    <option id="□" value="□">□</option>
                 </select>
             </div>
             <div class="form-item">
                 <label for="colorFichaJugador2">Seleccione un Color de Ficha:</label>
                 <input type="color" id="colorFichaJugador2">
             </div>
-            <input type="submit" value="Aceptar">
+            <input class="btnEnviar" type="submit" value="Aceptar">
         </form>
     </section>
     <main id="mainTaTeTi">
@@ -70,8 +73,9 @@
         <section>
             <div class="playerCards">
                 <div class="cardJugador1">
-                    <p><span id="casillaNombreJugador1"></span><span id="casillaFichaJugador1"></span></p>
-                    <p><span>Partidas Ganadas: </span><span id="jugador1Contador"></span></p>
+                    <br>
+                    <p><span class="casillaNombre" id="casillaNombreJugador1"></span><span id="casillaFichaJugador1"></span></p><br>
+                    <p><span class="casillaPartidasGanadas">Partidas Ganadas: </span><span id="jugador1Contador"></span></p><br><br>
                     <p id="mensajeErrorJugador1"></p>
                 </div>
                 <div class="cardTurno">
@@ -79,8 +83,9 @@
                     <div id="divTurno"></div>
                 </div>
                 <div class="cardJugador2">
-                    <p><span id="casillaNombreJugador2"></span><span id="casillaFichaJugador2"></span></p>
-                    <p><span>Partidas Ganadas: </span><span id="jugador2Contador"></span></p>
+                    <br>
+                    <p><span class="casillaNombre" id="casillaNombreJugador2"></span><span id="casillaFichaJugador2"></span></p><br>
+                    <p><span class="casillaPartidasGanadas">Partidas Ganadas: </span><span id="jugador2Contador"></span></p><br><br>
                     <p id="mensajeErrorJugador2"></p>
                 </div>
             </div>
@@ -122,5 +127,6 @@
             </div>
         </div>
     </div>
+    <div id="soundDiv"></div>
 </body>
 </html>
